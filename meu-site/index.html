@@ -1,14 +1,97 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu repositório</title>
+    <title>Lista de Exercícios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+        
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        /* Estilo da imagem */
+        .secure-image {
+            max-width: 100%;
+            height: auto;
+            opacity: 1; /* Totalmente visível */
+        }
+
+        /* Camada transparente sobre a imagem para bloquear o clique */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.01); /* Quase invisível */
+            z-index: 1;
+        }
+    </style>
+
+    <script>
+        // Desativa o botão direito do mouse
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Desativa teclas como F12, Ctrl+Shift+I, Ctrl+U (para ver o código-fonte)
+        document.addEventListener('keydown', function(e) {
+            // F12 (DevTools)
+            if (e.keyCode == 123) {
+                e.preventDefault();
+            }
+            // Ctrl+Shift+I (Ferramentas de Desenvolvedor)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                e.preventDefault();
+            }
+            // Ctrl+U (Ver código-fonte)
+            if (e.ctrlKey && e.keyCode == 85) {
+                e.preventDefault();
+            }
+            // Ctrl+Shift+C (Inspecionar elemento)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 67) {
+                e.preventDefault();
+            }
+        });
+
+        // Desativa o print screen (tentativa, mas pode ser contornada)
+        window.addEventListener('keyup', function(e) {
+            if (e.key === 'PrintScreen') {
+                alert('Captura de tela desabilitada!');
+                navigator.clipboard.writeText('Captura de tela desabilitada!');
+            }
+        });
+
+        // Detecta tentativa de copiar com Ctrl+C
+        document.addEventListener('copy', function(e) {
+            alert('Cópia desabilitada!');
+            e.preventDefault();
+        });
+    </script>
 </head>
 <body>
-    <h1>Repositório de JavaScript</h1>
-    <script>
-        window.alert('Olá, Visitante!')
-    </script>
+    <h1>Lista de Exercícios em C</h1>
+    
+    <div class="image-container">
+        <!-- Imagem que queremos proteger -->
+        <img src="Lista2.png" alt="Imagem Protegida" class="secure-image">
+        <!-- Sobreposição para bloquear interações -->
+        <div class="overlay"></div>
+    </div>
 </body>
 </html>
